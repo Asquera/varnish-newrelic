@@ -4,6 +4,10 @@ warn() {
     echo "WARNING: $@" 1>&2
 }
 
+if [ ! -d "m4" ]; then
+    mkdir m4
+fi
+
 case `uname -s` in
 Darwin)
     LIBTOOLIZE=glibtoolize

@@ -19,6 +19,7 @@ For example in Ubuntu:
 Download the [varnish source](https://www.varnish-cache.org/releases).
 Unpack it to a folder and follow the instructions in the `INSTALL` file.
 This should build varnish from source and install it on the system.
+Varnish needs `autoconf` and `automake` installed.
 In order to compile a varnish module successfully, path variables to the varnish source
 and the vmods folder are necessary.
 Either provide them by specifying environment variables.
@@ -31,7 +32,7 @@ or by providing these variables when calling the `configure` script.
     ./configure VARNISHSRC=path/to/varnish_src VMODDIR=/usr/local/lib/varnish/vmods/
 
 
-The following steps install the metric vmod.
+The following steps install the vmod.
 
     cd vmod
     sh autogen.sh
