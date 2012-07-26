@@ -1,19 +1,17 @@
 INCLUDES = -I$(VARNISHSRC)/include -I$(VARNISHSRC)
 
 vmoddir = $(VMODDIR)
-vmod_LTLIBRARIES = libvmod_metric.la
+vmod_LTLIBRARIES = libvmod_newrelic.la
 
-libvmod_metric = -module -export-dynamic -avoid-version
+libvmod_newrelic = -module -export-dynamic -avoid-version
 
-libvmod_metric_la_SOURCES = \
-    ../../libmetric/metric/statsd_client.h \
-    ../../libmetric/metric/statsd_client.c \
+libvmod_newrelic_la_SOURCES = \
     vcc_if.c \
     vcc_if.h \
-    vmod_metric.c
+    vmod_newrelic.c
 
-vcc_if.c vcc_if.h: $(VARNISHSRC)/lib/libvmod_std/vmod.py $(top_srcdir)/src/vmod_metric.vcc
-    @PYTHON@ $(VARNISHSRC)/lib/libvmod_std/vmod.py $(top_srcdir)/src/vmod_metric.vcc
+vcc_if.c vcc_if.h: $(VARNISHSRC)/lib/libvmod_std/vmod.py $(top_srcdir)/src/vmod_newrelic.vcc
+    @PYTHON@ $(VARNISHSRC)/lib/libvmod_std/vmod.py $(top_srcdir)/src/vmod_newrelic.vcc
 
 VMOD_TESTS = tests/*.vtc
 .PHONY: $(VMOD_TESTS)
@@ -24,7 +22,7 @@ tests/*.vtc:
 check: $(VMOD_TESTS)
 
 EXTRA_DIST = \
-    vmod_metric.vcc \
+    vmod_newrelic.vcc \
     $(VMOD_TESTS)
 
 CLEANFILES = $(builddir)/vcc_if.c $(builddir)/vcc_if.h

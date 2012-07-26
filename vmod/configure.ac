@@ -1,8 +1,8 @@
 AC_PREREQ(2.59)
 AC_COPYRIGHT([Copyright (c) 2011 savetheinternet@omegasdg.com])
-AC_INIT([libvmod-metric], [trunk])
+AC_INIT([libvmod-newrelic], [trunk])
 AC_CONFIG_MACRO_DIR([m4])
-AC_CONFIG_SRCDIR(src/vmod_metric.vcc)
+AC_CONFIG_SRCDIR(src/vmod_newrelic.vcc)
 AM_CONFIG_HEADER(config.h)
 
 AC_CANONICAL_SYSTEM
