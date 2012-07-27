@@ -2,11 +2,11 @@ require 'rubygems'
 require 'sinatra'
 
 get '/' do
-  if request["X-Request-Start"]
-    request_start = request["X-Request-Start"]
-    "X-Request-Start: #{request_start}"
+  x_start = request.env['HTTP_X_REQUEST_START']
+  if x_start
+    "X-Request-Start: #{x_start}"
   else
-    "No X-Request-Start found"
+    "No X-Request-Start header found!"
   end
 end
 
