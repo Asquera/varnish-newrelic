@@ -1,6 +1,12 @@
 varnish-newrelic
 ================
 
+A small varnish vmod that allows to set the `X-Request-Start` header for use with
+[New Relic RPM](http://newrelic.com/) more conveniently.
+The vmod just encapsulates a small code snippet
+(found [here](http://blog.jacobelder.com/2010/07/tracking-request-queue-time-on-new-relic-rpm-with-varnish/))
+and offers a simple function for use in `vcl` scripts. See example below.
+
 
 
 ### Prerequisites
@@ -44,5 +50,21 @@ Running the `autogen` script can result in an error message, stating the "*requi
 It is [suggested to re-run](https://www.varnish-cache.org/trac/wiki/Installation) the script a second time.
 
 
-To clean everything, execute the `clean` shell script in the **vmod** folder. This removes all generated
-files and directories.
+
+### Example
+
+After the vmod is installed just import the `newrelic` vmod and can be referenced with the
+`newrelic.set_x_request_start` function at different points.
+
+    import newrelic;
+    backend default {
+        .host = "127.0.0.1";
+        .port = "4567";
+    }
+    sub vcl_recv {
+        newrelic.set_x_request_start();
+    }
+
+To check that everything is correctly set up you can start a small test web application from  he `test`
+folder. It needs Ruby with the sinatra gem insalled. Just start it and should display the time stamp
+of the `X-Request-Start` header

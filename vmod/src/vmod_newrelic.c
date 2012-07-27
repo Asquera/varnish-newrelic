@@ -5,9 +5,9 @@
 #include "bin/varnishd/cache.h"
 #include "vcc_if.h"
 
-void vmod_add_header(struct sess* session) {
+void vmod_set_x_request_start(struct sess* session) {
     struct timeval detail_time;
-    gettimeofday(&detail_time, NULL);
+    gettimeofday(&detail_time, 0);
     
     char start[20];
     
