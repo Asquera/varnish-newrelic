@@ -5,5 +5,5 @@ backend default {
 }
 
 sub vcl_recv {
-    newrelic.add_header();
+    newrelic.set_x_request_start();
 }
