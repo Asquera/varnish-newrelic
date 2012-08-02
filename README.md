@@ -68,3 +68,17 @@ After the vmod is installed just import the `newrelic` vmod and can be reference
 To check that everything is correctly set up you can start a small test web application from  he `test`
 folder. It needs Ruby with the sinatra gem insalled. Just start it and should display the time stamp
 of the `X-Request-Start` header
+
+
+
+### Debian Package
+
+A new source package can be created from within the vmod folder.
+
+    dh_make -p <packagename>_<version> -l --createorig
+
+The parameter `l` signals a library source package. `createorig` creates orig.tar.gz file.
+
+* Configure the information regarding package name, maintainer and version in `debian/control` and
+`debian/changelog`
+* Remove all *.ex files

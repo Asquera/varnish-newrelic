@@ -1,0 +1,22 @@
+Source: vmodnewrelic
+Priority: extra
+Maintainer: Sebastian Ziebell <sebastian.ziebell@unknown>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+Section: libs
+XSBC-Original-Maintainer: Sebastian Ziebell <sebastian.ziebell@asquera.de>
+
+Package: vmodnewrelic-dev
+Section: libdevel
+Architecture: any
+Depends: vmodnewrelicBROKEN (= ${binary:Version})
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
+
+Package: vmodnewrelicBROKEN
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Adds X-Request-Start header in varnish scripts
+ A varnish module that adds the X-Request-Start header
+ in vcl scripts for use with NewRelic.
